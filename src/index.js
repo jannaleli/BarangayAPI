@@ -34,3 +34,13 @@ const routes = require('./routes')
 routes.forEach((route, index) => {
      fastify.route(route)
     })
+
+// Import Swagger Options
+const swagger = require('./config/swagger')
+
+// Register Swagger
+fastify.register(require('fastify-swagger'), swagger.options)
+
+await fastify.listen(3000)
+fastify.swagger()
+fastify.log.info(`listening on ${fastify.server.address().port}`)
