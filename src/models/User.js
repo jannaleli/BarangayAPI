@@ -1,7 +1,8 @@
-// External Dependancies
-const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
+var mongoose = require('mongoose');
+
+// Setup schema
+var userSchema = mongoose.Schema({
   user_id: String,
   firstname: String,
   lastname: String,
@@ -9,7 +10,9 @@ const userSchema = new mongoose.Schema({
   birthdate: Date,
   create_date: Date,
   attachment_id: String
+});
 
-})
+// Export Contact model
+module.exports = mongoose.model('User', userSchema);
 
-module.exports = mongoose.model('User', userSchema)
+
